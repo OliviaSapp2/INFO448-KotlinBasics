@@ -62,6 +62,11 @@ class HomeworkTest {
         assertEquals(4, mathOp(2, 2, ::add ))
         assertEquals(0, mathOp(2, 2, ::sub ))
         assertEquals(16, mathOp(4, 4, { l,r -> l*r} ))
+
+        assertEquals(1, mathOp(3, -2, ::add )) //new test 1
+        assertEquals(5, mathOp(3, -2, ::sub )) //new test 2
+
+
     }
 
     // =================
@@ -71,6 +76,12 @@ class HomeworkTest {
         assertEquals("Ted", p1.firstName )
         assertEquals(48, p1.age)
         assertEquals("[Person firstName:Ted lastName:Neward age:48]", p1.debugString)
+        
+        //new test 3
+        val p2 = Person("Olivia", "Sapp", 21)
+        assertEquals("Olivia", p2.firstName )
+        assertEquals(21, p2.age)
+        assertEquals("[Person firstName:Olivia lastName:Sapp age:21]", p2.debugString)
     }
     
 
@@ -108,7 +119,10 @@ class HomeworkTest {
         val tests = listOf(
             Pair(tenUSD, tenUSD) to Money(20, "USD"),
             Pair(tenUSD, fiveGBP) to Money(20, "USD"),
-            Pair(fiveGBP, tenUSD) to Money(10, "GBP")
+            Pair(fiveGBP, tenUSD) to Money(10, "GBP"),
+            Pair(fiveGBP, fiveGBP) to Money(10, "GBP"), //new test 4
+            Pair(fifteenEUR, fiveGBP) to Money(30, "EUR"), //new test 5 
+            Pair(fiveGBP, fifteenEUR) to Money(10, "GBP"), //new test 6
         )
         for ( (pair, result) in tests) {
             assertEquals(result.amount, (pair.first + pair.second).amount)
