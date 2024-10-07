@@ -72,6 +72,7 @@ class HomeworkTest {
         assertEquals(48, p1.age)
         assertEquals("[Person firstName:Ted lastName:Neward age:48]", p1.debugString)
     }
+    
 
     // =================
     // Money tests
@@ -103,7 +104,7 @@ class HomeworkTest {
             assertEquals(to.amount, from.convert(to.currency).amount)
         }
     }
-    @Test fun Money_addTests() {
+   @Test fun Money_addTests() {
         val tests = listOf(
             Pair(tenUSD, tenUSD) to Money(20, "USD"),
             Pair(tenUSD, fiveGBP) to Money(20, "USD"),
@@ -112,6 +113,6 @@ class HomeworkTest {
         for ( (pair, result) in tests) {
             assertEquals(result.amount, (pair.first + pair.second).amount)
             assertEquals(result.currency, (pair.first + pair.second).currency)
-        }
+       }
     }
 }
