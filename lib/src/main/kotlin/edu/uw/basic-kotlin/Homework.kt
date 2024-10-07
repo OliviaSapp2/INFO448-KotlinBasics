@@ -60,9 +60,9 @@ class Money(val amount: Int, val currency: String){
         return Money(this.amount + other.amount, this.currency)
     }
 
-    fun convert(other: String): Money{
+    fun convert(newCurrency: String): Money{
         var newAmount = amount
-        if(currency !== other){
+        if(currency !== newCurrency){
             //convert to USD
             if (currency === "GBP"){
                 newAmount = amount * 2
@@ -74,20 +74,17 @@ class Money(val amount: Int, val currency: String){
                 newAmount = (amount * 2) /3
             }
 
-            //convert to Other
-            if (other === "GBP"){
+            //convert to newCurrency
+            if (newCurrency === "GBP"){
                 newAmount = newAmount / 2
             }
-            if (other === "CAN"){
+            if (newCurrency === "CAN"){
                 newAmount = (newAmount * 5) /4
             }
-            if (other === "EUR"){
+            if (newCurrency === "EUR"){
                 newAmount = (newAmount * 3) /2
             }
         }
-        return Money(newAmount, other)
+        return Money(newAmount, newCurrency)
     }
 }
-
-//step 1 convert to USD
-// step two convert to Other
